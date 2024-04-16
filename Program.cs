@@ -4,25 +4,27 @@
     {
         static void Main(string[] args)
         {
-            string[] nintendoCharacters = { "Super Mario", "Link", "Peach", "Donkey Kong", "Luigi", "Waluigi", "Wario", "Toad", "Daisy" };
+            string[] heroes = { "D. Va", "Lucio", "Mercy", "Soldier 76", "Pharah", "Reinhardt" };
 
-            // Separate statements
-            var nintendoCharactersWithA = nintendoCharacters.Where(n => n.Contains("a"));
-            var lowerNintendoCharactersWithA = nintendoCharactersWithA.Select(n => n.ToLower());
+            // Method syntax
+            var result = heroes.Select(h => $"Introducing...{h}!");
 
-            // Chained expressions
-            var sameResult = nintendoCharacters
-                .Select(n => n.ToLower())
-                .Where(n => n.Contains("a"));
+            // Query syntax
+            var result2 = from h in heroes
+                          where h.Contains(" ")
+                          select h.IndexOf(" ");
 
-            foreach ( var n in nintendoCharactersWithA )
+            // Printing...
+            Console.WriteLine("'result': ");
+            foreach (var v in result)
             {
-                Console.WriteLine(n);
+                Console.WriteLine(v);
             }
 
-            foreach ( var n in sameResult)
+            Console.WriteLine("\n'result2': ");
+            foreach (var v in result2)
             {
-                Console.WriteLine(n);
+                Console.WriteLine(v);
             }
 
         }
